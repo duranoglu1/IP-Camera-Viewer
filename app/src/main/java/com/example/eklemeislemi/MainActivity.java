@@ -67,21 +67,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // captures an image from camera and displays in the ImageView in the app
     public void captureImage() {
         Mat imageArray = new Mat();
         VideoCapture videoDevice = new VideoCapture();
-        // verilen adresteki yayını yakalar
         //videoDevice.open("http://192.168.1.8");
-         videoDevice.open("http://1jfiegbqnbxcq:Duranoglu1@192.168.1.8");
-        // Kullanıcı girişi gerektiren yayınlar için aşağıdaki gibi düzenlemeniz gerekmekte
+         videoDevice.open("http://Duranoglu1:Duranoglu1@192.168.1.8");
         //videoDevice.open("http://<username:password>@<ip_address>/video.cgi?.mjpg")
         if (videoDevice.isOpened()) {
-            // video aygıtından bir kare oku ve mat nesnesine yerleştir
             videoDevice.read(imageArray);
             videoDevice.release();
 
-            // let's put the camera image to ImageView to display in the app
             ImageView imageView = findViewById(R.id.imageView);
             imageView.setImageBitmap(convertMatToBitMap(imageArray));
 
@@ -89,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             Log.d("D1", "Goruntu almada hata");
-            Log.d("Exception", "IP kamera aygıtına bağlanılamadı.");
+            Log.d("Exception", "Couldn't connect to IP Camera.");
         }
     }
 
@@ -117,16 +112,13 @@ public class MainActivity extends AppCompatActivity {
 //        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 //        Mat imageArray = new Mat();
 //        VideoCapture videoDevice = new VideoCapture();
-//        // verilen adresteki yayını yakalar
-//        videoDevice.open("http://192.168.1.51/mjpg/stream.cgi");
-//        // Kullanıcı girişi gerektiren yayınlar için aşağıdaki gibi düzenlemeniz gerekmekte
+//        videoDevice.open("http://192.168.1.8/mjpg/stream.cgi");
 //        //videoDevice.open("http://<username:password>@<ip_address>/video.cgi?.mjpg")
 //        if (videoDevice.isOpened()) {
-//            // video aygıtından bir kare oku ve mat nesnesine yerleştir
 //            videoDevice.read(imageArray);
 //            videoDevice.release();
 //        } else {
-//            System.out.println("IP kamera aygıtına bağlanılamadı.");
+//            System.out.println("Couldn't connect to IP Camera.");
 //        }
 //    }
 }
